@@ -25,3 +25,7 @@ composer.phar
 phpunit.phar
 # local phpunit config
 /phpunit.xml
+
+# Need to ignore some configuration :p
+config/web.php
+config/db.php
