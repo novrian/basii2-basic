@@ -26,6 +26,5 @@ phpunit.phar
 # local phpunit config
 /phpunit.xml
 
-# Need to ignore some configuration :p
-config/web.php
-config/db.php
+tests/_output/*
+tests/_support/_generated
