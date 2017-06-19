@@ -11,10 +11,15 @@
     },
     "minimum-stability": "dev",
     "require": {
-        "php": ">=5.4.0",
+        "php": ">=5.6.0",
         "yiisoft/yii2": "~2.0.5",
         "yiisoft/yii2-bootstrap": "~2.0.0",
-        "yiisoft/yii2-swiftmailer": "~2.0.0"
+        "yiisoft/yii2-swiftmailer": "~2.0.0",
+        "noyii/common": "dev-master",
+        "noyii/dashboard": "dev-master",
+        "noyii/settings": "dev-master",
+        "noyii/master": "dev-master",
+        "noyii/user": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
@@ -43,6 +48,26 @@
         {
             "type": "composer",
             "url": "https://asset-packagist.org"
+        },
+        {
+            "type": "vcs",
+            "url": "git@bitbucket.org:nono_gallankz/noyii-common.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@bitbucket.org:nono_gallankz/noyii-dashboard.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@bitbucket.org:nono_gallankz/noyii-settings.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@bitbucket.org:nono_gallankz/noyii-master.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@bitbucket.org:nono_gallankz/noyii-user.git"
         }
     ],
     "extra": {
