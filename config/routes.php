@@ -69,4 +69,5 @@ return [
      * Website routes
      */
     '/' => 'site/index',
+    '/arungistrator' => 'dashboard/default/index',
 ];
