@@ -1,0 +1,130 @@
+@import "partials/bootstrap/variables";
+
+$border-color: #f4f4f4;
+$color-navy: #001F3F;
+$color-teal: #39CCCC;
+$color-purple: #605ca8;
+$color-orange: #ff851b;
+$color-maroon: #D81B60;
+
+/* ==========================================================================
+   CUSTOM RESET
+   ========================================================================== */
+// Reset border radius & box shadow yg di override oleh jQuery UI Bootstrap :p
+input[type="text"],
+input[type="password"],
+.ui-autocomplete-input,
+textarea,
+.uneditable-input {
+  border-radius: 0;
+  box-shadow: none;
+}
+// Set z-index untuk class ui-font
+.ui-front {
+  position: fixed;
+  z-index: 1040;
+}
+// Set Font Family untuk jQuery UI
+.ui-widget,
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
+  font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.ui-tooltip {
+  z-index: 9999 !important;
+}
+
+.margin_bottom_20 {
+  margin-bottom: 20px;
+}
+
+.font_mono {
+  font-family: $font-family-monospace;
+}
+
+.font_strong {
+  font-weight: bold;
+}
+
+.font_16px {
+  font-size: 16px;
+}
+
+.display_inline_block {
+  display: inline-block;
+}
+
+.label_modul { color: $color-purple; }
+.label_permission { color: $color-orange; }
+
+/* ==========================================================================
+   PROGRESS WIZARD
+   ========================================================================== */
+@import "partials/progress-wizard";
+.progress-indicator {
+  margin: 40px 0;
+  font-size: 100%;
+}
+
+/* ==========================================================================
+   GRID VIEW COMPONENT
+   ========================================================================== */
+.grid_action_text {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.grid_filter,
+.grid_pagination {
+  margin: 0;
+  text-align: right;
+}
+
+.grid_pagination .pagination {
+  margin-top: 0;
+}
+
+/* ==========================================================================
+   TABLE GRID VIEW
+   ========================================================================== */
+table.table tr[class~="tr-inactive"] {
+  td {
+    background-color: #A0A0A0;
+  }
+}
+
+/* ==========================================================================
+   LIST VIEW
+   ========================================================================== */
+div[class~="list-view"] div[class~="list_view_row"] {
+  padding-bottom: 10px;
+  border-bottom: 1px solid $border-color;
+}
+div[class~="list_view_modul"] {
+  .label_modul { color: $color-purple; }
+  .label_permission { color: $color-orange; }
+}
+
+/* ==========================================================================
+   FORM
+   ========================================================================== */
+textarea { resize: vertical; }
+
+span.required {
+  display: inline-block;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 1em;
+  font-weight: bold;
+  line-height: 1;
+  color: #FF0000;
+}
+
+.left_icon, .btn_left_icon { margin-right: 10px; }
+.right_icon, .btn_right_icon { margin-left: 10px; }
+
+.img_upload_preview {
+  margin-bottom: 20px;
+  max-width: 200px;
+  max-height: 200px;
+}

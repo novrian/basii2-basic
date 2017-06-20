@@ -19,7 +19,8 @@
         "noyii/dashboard": "dev-master",
         "noyii/settings": "dev-master",
         "noyii/master": "dev-master",
-        "noyii/user": "dev-master"
+        "noyii/user": "dev-master",
+        "dmstr/yii2-adminlte-asset": "2.*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
