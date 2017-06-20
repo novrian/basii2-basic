@@ -11,6 +11,7 @@ var gulp     = require('gulp'),
  * ============================================================================
  */
 var DB = {
+  host: "10.0.2.2",                 // Host Database
   name: "basii2_basic",             // Nama Database
   nameTest: "basii2_basic_test",    // Nama Database Test
   user: "basii2_basic",             // User Database
@@ -22,52 +23,20 @@ var DB = {
  * INIT TASK
  * ============================================================================
  */
-gulp.task('init', [ 'gulpModulUser' ], function() {
-  // Install package NPM yang dibutuhkan
+gulp.task('init', [ 'initDb', 'initDbTest' ], function() {
   // Init Database
   // Init Test Database
 });
 
 /**
  * ============================================================================
- * Init Database
+ * Init Database Utama
  * ============================================================================
- *
-gulp.task('initDb', shell.task(
-  [
-    // Migrasi modul User
-    './yii migrate/up --migrationPath="@vendor/noyii/user/migrations" --interactive=0',
-    // Migrasi modul Setting
-    './yii migrate/up --migrationPath="@vendor/noyii/settings/migrations" --interactive=0',
-    // Migrasi modul master
-    './yii migrate/up --migrationPath="@vendor/noyii/master/migrations" --interactive=0',
-    // Import data2 modul master
-    'gulp --gulpfile="vendor/noyii/master/gulpfile.js" initSql --db ' + DB.name + ' -u ' + DB.user + ' -p ' + DB.password,
-  ],
-  {
-    cwd: "./app",
-    verbose: true
-  }
-));
-gulp.task('initTestDb', shell.task(
-  [
-    // Migrasi modul User
-    './tests/bin/yii migrate/up --migrationPath="@vendor/noyii/user/migrations" --interactive=0',
-    // Migrasi modul Setting
-    './tests/bin/yii migrate/up --migrationPath="@vendor/noyii/settings/migrations" --interactive=0',
-    // Migrasi modul master
-    './tests/bin/yii migrate/up --migrationPath="@vendor/noyii/master/migrations" --interactive=0',
-    // Import data2 modul master
-    'gulp --gulpfile="vendor/noyii/master/gulpfile.js" initSql --db ' + DB.nameTest + ' -u ' + DB.user + ' -p ' + DB.password,
-  ],
-  {
-    cwd: "./app",
-    verbose: true
-  }
-));
-*/
-gulp.task('initDb', [ 'migrateMasterData' ]);
-// Migrasi modul User
+ */
+gulp.task('initDb', [ 'migrateMasterData' ], function() {
+  // Migrasi Yii, Import Data, dll.
+});
+// Migrasi modul User ke database utama
 gulp.task('migrateUser', function(cb) {
   exec("./yii migrate/up --migrationPath='@vendor/noyii/user/migrations' --interactive=0", function(err, stdout, stderr) {
     console.log(stdout);
@@ -75,7 +44,7 @@ gulp.task('migrateUser', function(cb) {
     cb(err);
   });
 });
-// Migrasi modul Setting
+// Migrasi modul Setting ke database utama
 gulp.task('migrateSetting', [ 'migrateUser' ], function(cb) {
   exec("./yii migrate/up --migrationPath='@vendor/noyii/settings/migrations' --interactive=0", function(err, stdout, stderr) {
     console.log(stdout);
@@ -83,7 +52,7 @@ gulp.task('migrateSetting', [ 'migrateUser' ], function(cb) {
     cb(err);
   });
 });
-// Migrasi modul Master
+// Migrasi modul Master ke database utama
 gulp.task('migrateMaster', [ 'migrateSetting' ], function(cb) {
   exec("./yii migrate/up --migrationPath='@vendor/noyii/master/migrations' --interactive=0", function(err, stdout, stderr) {
     console.log(stdout);
@@ -91,11 +60,48 @@ gulp.task('migrateMaster', [ 'migrateSetting' ], function(cb) {
     cb(err);
   });
 });
-// Import data2 modul Master
+// Import data2 modul Master ke database utama
 gulp.task('migrateMasterData', [ 'migrateMaster' ], function(cb) {
-  exec("gulp --gulpfile='vendor/noyii/master/gulpfile.js' initSql --db " + DB.name + " -u " + DB.user + " -p " + DB.password, function(err, stdout, stderr) {
+  return gulp.src('./vendor/noyii/master/migrations/sql/*.sql')
+    .pipe(gulpExec("mysql -h " + DB.host + " -u " + DB.user + " -p" + DB.password + " " + DB.name + " < <%= file.path %>"))
+    .pipe(gulpExec.reporter());
+});
+
+/**
+ * ============================================================================
+ * Init Database Test
+ * ============================================================================
+ */
+gulp.task('initDbTest', [ 'migrateMasterDataTest' ], function() {
+  // Migrasi Yii, Import Data, dll.
+});
+// Migrasi modul User ke database test
+gulp.task('migrateUserTest', function(cb) {
+  exec("./tests/bin/yii migrate/up --migrationPath='@vendor/noyii/user/migrations' --interactive=0", function(err, stdout, stderr) {
     console.log(stdout);
     console.log(stderr);
     cb(err);
   });
+});
+// Migrasi modul Setting ke database test
+gulp.task('migrateSettingTest', [ 'migrateUserTest' ], function(cb) {
+  exec("./tests/bin/yii migrate/up --migrationPath='@vendor/noyii/settings/migrations' --interactive=0", function(err, stdout, stderr) {
+    console.log(stdout);
+    console.log(stderr);
+    cb(err);
+  });
+});
+// Migrasi modul Master ke database test
+gulp.task('migrateMasterTest', [ 'migrateSettingTest' ], function(cb) {
+  exec("./tests/bin/yii migrate/up --migrationPath='@vendor/noyii/master/migrations' --interactive=0", function(err, stdout, stderr) {
+    console.log(stdout);
+    console.log(stderr);
+    cb(err);
+  });
+});
+// Import data2 modul Master ke database test
+gulp.task('migrateMasterDataTest', [ 'migrateMasterTest' ], function(cb) {
+  return gulp.src('./vendor/noyii/master/migrations/sql/*.sql')
+    .pipe(gulpExec("mysql -h " + DB.host + " -u " + DB.user + " -p" + DB.password + " " + DB.nameTest + " < <%= file.path %>"))
+    .pipe(gulpExec.reporter());
 });
