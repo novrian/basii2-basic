@@ -21,6 +21,9 @@ $config = [
             ],
         ],
         'db' => $db,
+        'authManager' => [
+            'class' => 'NoYii\User\components\rbac\DbManager'
+        ],
     ],
     'params' => $params,
     /*
