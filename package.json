@@ -1,0 +1,13 @@
+{
+  "name": "novrian-basii2-basic",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Novrian <me@novrian.info>",
+  "license": "MIT",
+  "homepage": "https://github.com/novrian/basii2-basic",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-exec": "^2.1.3",
+    "merge-stream": "^1.0.0"
+  }
+}
