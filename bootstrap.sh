@@ -19,6 +19,7 @@ sudo apt-get install -y nginx
 
 echo "Menginstall PHP"
 sudo apt-get install -y php5.6 php5.6-intl php5.6-xdebug php5.6-xml php5.6-curl php5.6-zip php5.6-mysql php5.6-mbstring php5.6-fpm php5.6-gd php-apcu
+sudo update-alternatives --set php /usr/bin/php5.6
 
 echo "Menginstall Composer"
 # install Composer
