@@ -1,9 +1,10 @@
 TODO
 ====
 
-- [ ] Setup themes AdminLTE
+- [ ] Setup themes AdminLTE untuk backend
 - [ ] Setup module Setting
 - [ ] Setup module User
 - [ ] Setup module Dashboard
-- [ ] Setup module Master
-- [ ] Buat gulpfile basic
+- [x] Setup module Master
+- [x] Buat task gulp inisialisasi DB
+- [x] Buat form login menggunakan AdminLTE

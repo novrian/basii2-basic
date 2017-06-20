@@ -3,7 +3,8 @@
 var gulp     = require('gulp'),
     gulpExec = require('gulp-exec'),
     exec     = require('child_process').exec,
-    merge    = require('merge-stream');
+    merge    = require('merge-stream'),
+    compass  = require('gulp-for-compass');
 
 /**
  * ============================================================================
@@ -104,4 +105,58 @@ gulp.task('migrateMasterDataTest', [ 'migrateMasterTest' ], function(cb) {
   return gulp.src('./vendor/noyii/master/migrations/sql/*.sql')
     .pipe(gulpExec("mysql -h " + DB.host + " -u " + DB.user + " -p" + DB.password + " " + DB.nameTest + " < <%= file.path %>"))
     .pipe(gulpExec.reporter());
+});
+
+/**
+ * ============================================================================
+ * CSS TASK
+ * ============================================================================
+ */
+gulp.task('css', function() {
+  var main = gulp.src('./web/sass/*.scss')
+    .pipe(compass({
+      sassDir: "web/sass",
+      cssDir: "web/css",
+      fontsDir: "web/fonts",
+      imagesDir: "web/img",
+      javascriptsDir: "web/js",
+      outputStyle: "compressed",
+      relativeAssets: true,
+      noLineComments: true,
+      force: true
+    }));
+
+  return main;
+});
+gulp.task('cssDev', function() {
+  var main = gulp.src('./web/sass/*.scss')
+    .pipe(compass({
+      sassDir: "web/sass",
+      cssDir: "web/css",
+      fontsDir: "web/fonts",
+      imagesDir: "web/img",
+      javascriptsDir: "web/js",
+      outputStyle: "nested",
+      relativeAssets: true,
+      noLineComments: false,
+      force: true
+    }));
+
+  return main;
+});
+
+/**
+ * ============================================================================
+ * DEFAULT TASK
+ * ============================================================================
+ */
+gulp.task('default', [ 'css' ], function() {});
+
+/**
+ * ============================================================================
+ * WATCH TASK
+ * ============================================================================
+ */
+gulp.task('w', function() {
+  gulp.watch('./web/sass/*.scss', [ 'cssDev' ]);
 });
