@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3a1be92c18de1453ceac336c317facd8",
+    "content-hash": "879ee7872cc206faf53ef30a509d4939",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -547,7 +547,7 @@
             "source": {
                 "type": "git",
                 "url": "git@bitbucket.org:nono_gallankz/noyii-master.git",
-                "reference": "9a59c4b6d60cc0a268a1c8b9c4c18c5681cbb3ee"
+                "reference": "8736c0e684b571e58630f709a94a1673ce603063"
             },
             "require": {
                 "noyii/dashboard": "dev-master",
@@ -573,7 +573,7 @@
                 }
             ],
             "description": "Modul Master Data Umum untuk Yii 2",
-            "time": "2017-01-03 16:51:13"
+            "time": "2017-06-20 19:12:39"
         },
         {
             "name": "noyii/settings",
@@ -758,12 +758,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "7d0d216781f2121d6b6daf8bcd9bed935b69afe9"
+                "reference": "7e60c7be829d2643e49235baeb7f03297bc0928c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/7d0d216781f2121d6b6daf8bcd9bed935b69afe9",
-                "reference": "7d0d216781f2121d6b6daf8bcd9bed935b69afe9",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/7e60c7be829d2643e49235baeb7f03297bc0928c",
+                "reference": "7e60c7be829d2643e49235baeb7f03297bc0928c",
                 "shasum": ""
             },
             "require": {
@@ -850,7 +850,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2017-06-18 15:41:17"
+            "time": "2017-06-20 23:04:39"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
@@ -3324,12 +3324,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-debug.git",
-                "reference": "1d3a7cb5b85505cfe0a4e50abe9ae9da45c09574"
+                "reference": "292a45e1fa5ee0f7f070e2a5228f6b916187af8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/1d3a7cb5b85505cfe0a4e50abe9ae9da45c09574",
-                "reference": "1d3a7cb5b85505cfe0a4e50abe9ae9da45c09574",
+                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/292a45e1fa5ee0f7f070e2a5228f6b916187af8a",
+                "reference": "292a45e1fa5ee0f7f070e2a5228f6b916187af8a",
                 "shasum": ""
             },
             "require": {
@@ -3363,7 +3363,7 @@
                 "debugger",
                 "yii2"
             ],
-            "time": "2017-05-22 12:59:26"
+            "time": "2017-06-21T11:41:00+00:00"
         },
         {
             "name": "yiisoft/yii2-gii",
